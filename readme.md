@@ -76,12 +76,20 @@ After setting your admin password, you will need to set the DNS Crypt service as
 - Disable any active `Upstream DNS Servers` service
 - Enable the first `Custom Upstream DNS Servers` and set the DNS Crypt IP Address:
   - `172.20.0.3`
-- Make sure to have the changes (the `Save` button is at the bottom)
+- Make sure to save the changes (the `Save` button is at the bottom)
 
 You will also need to add one or more black lists of hosts to prevent their access:
 
 - There is already a pre-loaded list. However it only prevents "adware & malware". You might want to change it by another one:
   - https://github.com/StevenBlack/hosts#list-of-all-hosts-file-variants
+- Then browse the `Adlists` option from the sidebar menu.
+- Add the URL of the list you want to add (and set a comment for it if needed). Then add it clicking the `Add` button.
+- Under the `List of adlists` block, make sure to enable or disable the lists according to your needs.
+
+Persist the changes!!
+
+- Browse the `Tools` option from the sidebar menu, and then click on the `Update Gravity` submenu.
+- Click on the `Update` button; otherwise your previous configuration might not be working unless you reboot the containers.
 
 ## Enable the DNS filter on your network
 
