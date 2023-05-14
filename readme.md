@@ -113,6 +113,17 @@ BLOCK_ICLOUD_PR=false
 # ...
 ```
 
+## Troubleshooting
+
+**ERROR: Pool overlaps with other one on this address space**
+
+The error message you're encountering suggests that the IP address range you specified for the bridge network in Docker overlaps with another existing network. Docker requires unique IP address ranges for each network to avoid conflicts.
+
+Your options are:
+
+1. Update the `docker-compose.yaml` file and assign a new IP Address range; or
+2. Update the existing networks if you run more than one Docker project to release the range used in this project
+
 ## Resources
 
 Read more about the used tech here:
