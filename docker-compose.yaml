@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  pihole:
+    container_name: dns-pihole
+    hostname: 'pihole'
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8088:80/tcp"
+    environment:
+      TZ: 'UTC'
+    volumes:
+      - './pihole/etc-pihole:/etc/pihole'
+      - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: unless-stopped
+    networks:
+      web_nuc:
+        ipv4_address: 172.20.0.2
+    depends_on:
+      - dnscrypt
+
+  dnscrypt:
+    container_name: dns-dnscrypt
+    hostname: 'dnscrypt'
+    build:
+      context: ./dnscrypt
+      dockerfile: Dockerfile
+    dns: # default DNS servers to boot the system
+      - 1.1.1.1
+      - 1.0.0.1
+    restart: unless-stopped
+    networks:
+      web_nuc:
+        ipv4_address: 172.20.0.3
+
+networks:
+  web_nuc:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/29

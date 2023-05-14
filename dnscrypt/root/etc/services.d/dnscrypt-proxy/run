@@ -1,0 +1,3 @@
+#!/command/execlineb -P
+
+/usr/sbin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
