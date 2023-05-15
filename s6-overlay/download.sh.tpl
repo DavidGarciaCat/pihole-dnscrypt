@@ -13,7 +13,7 @@ S6_OVERLAY_ARCH=arm
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FILE_NAME="s6-overlay.tar.xz"
-FILE_PATH="$SCRIPT_DIR/$FILE_NAME"
+FILE_PATH="$SCRIPT_DIR/../dnscrypt/$FILE_NAME"
 
 if [ -e "$FILE_PATH" ]; then
     echo "The file \"${FILE_NAME}\" exists in the script directory."
@@ -31,7 +31,7 @@ else
     tar -xf ${SCRIPT_DIR}/s6-overlay-noarch.tar.xz --directory=${SCRIPT_DIR}/s6-overlay
     tar -xf ${SCRIPT_DIR}/s6-overlay-${S6_OVERLAY_ARCH}.tar.xz --directory=${SCRIPT_DIR}/s6-overlay
 
-    tar -cf ${SCRIPT_DIR}/s6-overlay.tar.xz -C ${SCRIPT_DIR}/s6-overlay .
+    tar -cf ${FILE_PATH} -C ${SCRIPT_DIR}/s6-overlay .
     rm ${SCRIPT_DIR}/s6-overlay-noarch.tar.xz ${SCRIPT_DIR}/s6-overlay-${S6_OVERLAY_ARCH}.tar.xz
     rm -rf ${SCRIPT_DIR}/s6-overlay
 
